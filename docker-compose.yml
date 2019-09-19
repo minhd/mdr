@@ -27,3 +27,16 @@ services:
       - "./registry:/var/www/html"
     networks:
       - mdr
+
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: registry
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - mdr
